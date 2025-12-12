@@ -1,0 +1,127 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PROFIT CALCULATOR</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="card">
+    <h1 class="title">PROFIT CALCULATOR</h1>
+
+    <label class="row">
+      <span>Describe Your Investment Amount Rs. :</span>
+      <input id="amount" type="number" placeholder="Enter amount (e.g. 100000)" />
+    </label>
+
+    <label class="row">
+      <span>Describe Your Profit % for this investment :</span>
+      <input id="profitPct" type="number" step="0.01" placeholder="Enter annual profit % (e.g. 12)" />
+    </label>
+
+    <label class="row">
+      <span>Annual Profit on given % for this investment :</span>
+      <input id="annualProfit" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>15 % Tax for this investment :</span>
+      <input id="tax15" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>35 % Tax for this investment :</span>
+      <input id="tax35" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>Profit if 15 % Tax for this investment :</span>
+      <input id="profitIf15" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>Profit if 35 % Tax for this investment :</span>
+      <input id="profitIf35" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>Profit for 3 months if 15 % Tax for this investment :</span>
+      <input id="qtrProfit15" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>Profit for 3 months if 35 % Tax for this investment :</span>
+      <input id="qtrProfit35" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>Profit for 6 months if 15 % Tax for this investment :</span>
+      <input id="halfProfit15" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>Profit for 6 months if 35 % Tax for this investment :</span>
+      <input id="halfProfit35" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>Profit for 12 months if 15 % Tax for this investment :</span>
+      <input id="yearProfit15" readonly placeholder="-" />
+    </label>
+
+    <label class="row">
+      <span>Profit for 12 months if 35 % Tax for this investment :</span>
+      <input id="yearProfit35" readonly placeholder="-" />
+    </label>
+
+    <button id="calcBtn" class="calc">CALCULATE</button>
+
+    <p class="flicker">Feel Relax On Investment & Save Your Money For Your Important Needs</p>
+    <p class="powered">Powered By ; <strong>Azmat Ali</strong></p>
+
+    <p class="note">Note: National Saving Scheme for Short Term Certificates for 3 months, 6 months, 12 months</p>
+  </main>
+
+  <!-- compiled JS included below for immediate run (no build step required) -->
+  <script>
+  // --- BEGIN script.js (compiled from script.ts) ---
+  (function(){
+    const $ = (id)=>document.getElementById(id);
+    const n = (v)=>(isFinite(+v)?+v:0);
+    const toR = (v)=>'Rs. '+Number(v).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+
+    function calcAll(){
+      const amount = n($("amount").value);
+      const pct = n($("profitPct").value);
+      const annual = amount * pct/100;
+      const tax15 = annual * 0.15;
+      const tax35 = annual * 0.35;
+      const profit15 = annual - tax15;
+      const profit35 = annual - tax35;
+
+      $("annualProfit").value = toR(annual);
+      $("tax15").value = toR(tax15);
+      $("tax35").value = toR(tax35);
+      $("profitIf15").value = toR(profit15);
+      $("profitIf35").value = toR(profit35);
+
+      $("qtrProfit15").value = toR(profit15 * 3/12);
+      $("qtrProfit35").value = toR(profit35 * 3/12);
+      $("halfProfit15").value = toR(profit15 * 6/12);
+      $("halfProfit35").value = toR(profit35 * 6/12);
+      $("yearProfit15").value = toR(profit15 * 12/12);
+      $("yearProfit35").value = toR(profit35 * 12/12);
+    }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      $("calcBtn").addEventListener('click',calcAll);
+      $("amount").addEventListener('input',calcAll);
+      $("profitPct").addEventListener('input',calcAll);
+    });
+  })();
+  // --- END script.js ---
+  </script>
+</body>
+</html>
