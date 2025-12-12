@@ -146,4 +146,4 @@ yearProfit35 = profitIf35 × 1
 
 **Powered By: Azmat Ali**
 
-If you want a GitHub‑ready ZIP folder or want to push it directly to GitHub, just let me know!
+
